@@ -2,6 +2,7 @@ package com.LaxmiInfoTech.PhoneBookAPP.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,37 @@ public class ContactServiceImpl implements ContactServiceI{
 		
 		
 		return all;
+	}
+
+	@Override
+	public Contact getContactByID(Integer ID) {
+		 Contact contact = contactRepository.findById(ID).get();
+		 
+		return contact;
+	}
+
+	@Override
+	public boolean updateContact(Contact contact) {
+		Contact contact2 = contactRepository.save(contact);
+		if(contact2!=null) {
+			return true;
+		}else {
+		return false;
+		
+	}
+		
+	}
+
+	@Override
+	public boolean deleteContact(Integer id) {
+		boolean existsById = contactRepository.existsById(id);
+		if(existsById) {
+			contactRepository.deleteById(id);
+			return true;
+		}else {
+			return false;
+		}
+		
+	
 	}
 }

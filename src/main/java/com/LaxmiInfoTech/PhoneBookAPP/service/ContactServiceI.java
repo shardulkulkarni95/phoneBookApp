@@ -9,4 +9,10 @@ public interface ContactServiceI {
 	public abstract boolean saveContact(Contact contact);
 	
 	public abstract List<Contact> getAllContact();
+	
+	public abstract Contact getContactByID(Integer ID);
+	
+	public abstract boolean updateContact(Contact contact);
+	
+	public abstract boolean deleteContact(Integer id);
 }
